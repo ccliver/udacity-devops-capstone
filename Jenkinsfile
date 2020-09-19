@@ -28,6 +28,7 @@ pipeline {
         stage('Create deployment') {
             steps {
                 sh 'kubectl get deployments | grep ${STACK_NAME} || make create_deployment'
+	            sh 'kubectl rollout status deployment/${STACK_NAME}'
             }
         }
         stage('Create service') {
