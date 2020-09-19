@@ -11,7 +11,7 @@ pipeline {
                 sh 'make build_app'
             }
         }
-        stage('Build EKS cluster')
+        stage('Build EKS cluster') {
             steps {
                 sh 'make deploy_eks'
             }
