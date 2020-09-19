@@ -56,7 +56,7 @@ lint: ## Check Dockerfile and html for syntax errors
 	@tidy -q -e html/index.html
 
 build_app: ## Build app docker image
-	@docker build -t ${STACK_NAME}
+	@docker build . -t ${STACK_NAME}
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
