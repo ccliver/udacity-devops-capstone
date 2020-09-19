@@ -33,6 +33,7 @@ pipeline {
         stage('Create service') {
             steps {
                 sh 'kubectl get services | grep ${STACK_NAME} || make create_service'
+                sh 'kubectl describe service ${STACK_NAME}'
             }
         }
     }
