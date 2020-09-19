@@ -17,3 +17,4 @@ spec:
       containers:
       - image: 420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone
         name: udacity-devops-capstone
+        imagePullPolicy: Always
