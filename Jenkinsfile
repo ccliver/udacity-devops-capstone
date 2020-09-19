@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Build EKS cluster') {
             steps {
-                sh 'make deploy_eks'
+                sh '''#!/bin/bash
+                    make deploy_eks'''
             }
         }
         stage('Update kubernetes config') {
