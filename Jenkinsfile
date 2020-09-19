@@ -16,7 +16,7 @@ pipeline {
                 sh 'if [ ! -d /var/lib/jenkins/.kube ]; then mkdir ~/.kube; fi; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone --role-arn $(aws sts get-caller-identity --query Arn --output text)'
             }
         }
-        stage('Deploy App') {
+        /*stage('Deploy App') {
             steps {
                 sh 'make deploy_latest_app'
             }
