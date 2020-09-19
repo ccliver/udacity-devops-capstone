@@ -25,9 +25,14 @@ pipeline {
                 sh 'if [ ! -d /var/lib/jenkins/.kube ]; then mkdir ~/.kube; fi; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone'
             }
         }
-        stage('Deploy App') {
+        stage('Create deployment') {
             steps {
-                sh 'kubectl get deployments | grep ${STACK_NAME} || make deploy_latest_app'
+                sh 'kubectl get deployments | grep ${STACK_NAME} || make create_deployment'
+            }
+        }
+        stage('Create service') {
+            steps {
+                sh 'kubectl get services | grep ${STACK_NAME} || make create_service'
             }
         }
     }
