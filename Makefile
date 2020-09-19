@@ -69,9 +69,9 @@ create_service: ## Create the Kubernetes service and load balancer
 	@kubectl apply -f service.yml
 
 deploy_latest_app: ## Deploy the latest version of the app
-	@kubectl set image deployment ${STACK_NAME} ${STACK_NAME}=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone:latest
-	@kubectl rollout restart deployment ${STACK_NAME}
-	@kubectl rollout status -w deployment ${STACK_NAME}
+	@kubectl set image deployments ${STACK_NAME} ${STACK_NAME}=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone:latest
+	@kubectl rollout restart deployments ${STACK_NAME}
+	@kubectl rollout status -w deployments ${STACK_NAME}
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
