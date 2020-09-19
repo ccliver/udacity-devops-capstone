@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        STACK_NAME = "udacity-devops-capstone"
+    }
     stages {
         stage('Lint Dockerfile and HTML') {
             steps {
