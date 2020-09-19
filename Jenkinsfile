@@ -11,12 +11,12 @@ pipeline {
                 sh 'make build_app'
             }
         }
-        /*stage('Update kubernetes config') {
+        stage('Update kubernetes config') {
             steps {
                 sh 'echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone'
             }
         }
-        stage('Deploy App') {
+        /*stage('Deploy App') {
             steps {
                 sh 'make deploy_latest_app'
             }
