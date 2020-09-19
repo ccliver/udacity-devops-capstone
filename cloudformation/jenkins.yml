@@ -158,7 +158,7 @@ Resources:
   ContainerRepo: 
     Type: AWS::ECR::Repository
     Properties: 
-      RepositoryName: app-repo
+      RepositoryName: udacity-devops-capstone
       ImageScanningConfiguration: 
         scanOnPush: 'true'
 

@@ -57,6 +57,9 @@ lint: ## Check Dockerfile and html for syntax errors
 
 build_app: ## Build app docker image
 	@docker build . -t ${STACK_NAME}
+	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 420711152239.dkr.ecr.us-east-1.amazonaws.com
+	@docker tag ${STACK_NAME}:latest 420711152239.dkr.ecr.us-east-1.amazonaws.com/${STACK_NAME}:latest
+	@docker push 420711152239.dkr.ecr.us-east-1.amazonaws.com/${STACK_NAME}:latest
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
