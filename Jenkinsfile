@@ -37,5 +37,10 @@ pipeline {
                 sh 'kubectl describe service ${STACK_NAME}'
             }
         }
+        stage('Deploy latest app') {
+            steps {
+                sh 'make deploy_latest_app'
+            }
+        }
     }
 }
