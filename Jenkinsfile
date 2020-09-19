@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy App') {
             steps {
-                sh 'if [ ! kubectl get deployments | grep ${STACK_NAME} ]; then make deploy_latest_app; fi'
+                sh 'kubectl get deployments | grep ${STACK_NAME} || make deploy_latest_app'
             }
         }
     }
