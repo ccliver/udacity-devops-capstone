@@ -64,7 +64,7 @@ build_app: ## Build app docker image
 
 deploy_latest_app: ## Create a Kubernetes deployment for the app
 	@kubectl create deployment ${STACK_NAME} --image=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone
-	@kubectl rollout status deployment/udacity-devops-capstone
+	@kubectl rollout status deployment/${STACK_NAME}
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
