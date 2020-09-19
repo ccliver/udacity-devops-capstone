@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Update kubernetes config') {
             steps {
-                sh '[[ ! -d ~/.kube ]] && mkdir ~/.kube; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone'
+                sh 'if [ ! -d /var/lib/jenkins/.kube ]; then mkdir ~/.kube; fi; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone'
             }
         }
         /*stage('Deploy App') {
