@@ -62,6 +62,9 @@ build_app: ## Build app docker image
 	@docker tag ${STACK_NAME}:latest 420711152239.dkr.ecr.us-east-1.amazonaws.com/${STACK_NAME}:latest
 	@docker push 420711152239.dkr.ecr.us-east-1.amazonaws.com/${STACK_NAME}:latest
 
+deploy_latest_app: ## Create a Kubernetes deployment for the app
+	@kubectl create deployment ${STACK_NAME} --image=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

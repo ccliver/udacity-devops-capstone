@@ -21,5 +21,5 @@ You will develop a CI/CD pipeline for micro services applications with either bl
 * Create a user
 * Install the Blue Ocean plugin and open Blue Ocean
 * Create a Github Personal Access Token with [these permissions](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,write:repo_hook)
-* Click Create a new Pipeline, select Github, enter access token, select the organization, select the capstone repo, click Create Pipeline
+* Click Create a new Pipeline, select Github, enter access token, select the organization, select the capstone repo, click Create Pipeline, build the master branch
 ```
