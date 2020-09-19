@@ -63,14 +63,13 @@ build_app: ## Build app docker image
 	@docker push 420711152239.dkr.ecr.us-east-1.amazonaws.com/${STACK_NAME}:latest
 
 create_deployment: ## Create a Kubernetes deployment for the app
-	@kubectl create deployment ${STACK_NAME} --image=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone
+	@kubectl apply -f deployment.yml
 
 create_service: ## Create the Kubernetes service and load balancer
 	@kubectl apply -f service.yml
 
 deploy_latest_app: ## Deploy the latest version of the app
 	@kubectl set image deployment ${STACK_NAME} ${STACK_NAME}=420711152239.dkr.ecr.us-east-1.amazonaws.com/udacity-devops-capstone:latest
-	@kubectl rollout status deployment/${STACK_NAME}
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
