@@ -11,9 +11,14 @@ pipeline {
                 sh 'make build_app'
             }
         }
+        stage('Build EKS cluster')
+            steps {
+                sh 'make deploy_eks'
+            }
+        }
         stage('Update kubernetes config') {
             steps {
-                sh 'if [ ! -d /var/lib/jenkins/.kube ]; then mkdir ~/.kube; fi; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone --role-arn $(aws sts get-caller-identity --query Arn --output text)'
+                sh 'if [ ! -d /var/lib/jenkins/.kube ]; then mkdir ~/.kube; fi; echo "" > ~/.kube/config && aws eks --region us-east-1 update-kubeconfig --name udacity-devops-capstone'
             }
         }
         /*stage('Deploy App') {
