@@ -141,7 +141,7 @@ Resources:
       UserData: !Base64 |
         #!/bin/bash
         apt-get update
-        apt install -y default-jdk awscli docker.io
+        apt install -y default-jdk awscli docker.io make
         wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
         echo 'deb https://pkg.jenkins.io/debian-stable binary/' > /etc/apt/sources.list.d/jenkins.list
         apt-get update
