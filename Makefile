@@ -45,7 +45,7 @@ jenkins_url: ## Output URL to Jenkins
 	@echo "http://$(shell aws cloudformation describe-stacks --stack-name ${STACK_NAME} | jq -r .Stacks[0].Outputs[0].OutputValue):8080"
 
 deploy_eks: ## Deploy an EKS cluster with eksctl
-	@eksctl get cluster ${STACK_NAME} || \
+	@eksctl get cluster ${STACK_NAME} --region ${REGION} || \
 		eksctl create cluster --name ${STACK_NAME} --version 1.17 --region ${REGION} \
 		--nodegroup-name linux-nodes --nodes 3 --nodes-min 1 --nodes-max 4 --managed
 
